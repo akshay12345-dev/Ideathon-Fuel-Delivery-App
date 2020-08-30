@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FuelDelivery1</string>
+    <string name="title_activity_bottom">Bottom</string>
+    <string name="title_home">Home</string>
+    <string name="title_book">Details</string>
+    <string name="title_account">Account</string>
+    <string name="title_activity_google_map1">Map</string>
+    <string name="str_btn_find">FIND</string>
+    <string name="hnt_et_location">hint</string>
+
+</resources>
