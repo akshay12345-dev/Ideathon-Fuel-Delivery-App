@@ -64,8 +64,8 @@ public class HomeFragment extends Fragment{
     Location currentLocation;
     String fullAdd = null;
     //Context ctx = getContext ( );
-   // FusedLocationProviderClient fusedLocationProviderClient;
-    SharedPreferences sharedPreferences1;
+   FusedLocationProviderClient fusedLocationProviderClient;
+    //SharedPreferences sharedPreferences1;
 
     private static final int REQUEST_CODE = 101;
 
@@ -91,8 +91,8 @@ public class HomeFragment extends Fragment{
 
 
 
-        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient (getContext ());
-       // fetchLocation ( );
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient (getContext ());
+        fetchLocation ( );
 
 
         final ViewPager mViewPager = root.findViewById (R.id.viewPage);
@@ -106,8 +106,8 @@ public class HomeFragment extends Fragment{
                 startActivity (ii1);
             }
         });
-        sharedPreferences1=getContext ().getSharedPreferences ("mykey",0);
-        String ss10=sharedPreferences1.getString ("value1",null);
+        //sharedPreferences1=getContext ().getSharedPreferences ("mykey",0);
+        //String ss10=sharedPreferences1.getString ("value1",null);
 
 
 
@@ -206,7 +206,7 @@ public class HomeFragment extends Fragment{
 
     }*/
 
-   /* private void fetchLocation() {
+    private void fetchLocation() {
 
         if (ActivityCompat.checkSelfPermission (getContext (), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission (getContext (), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions ((Activity) getContext (), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
@@ -219,25 +219,25 @@ public class HomeFragment extends Fragment{
                 if (location != null) {
                     currentLocation = location;
                     //ss1=getAddress (getContext (),currentLocation.getLatitude (),currentLocation.getLongitude ());
-                    if(sharedPreferences1.contains ("value1"))
+                   /* if(sharedPreferences1.contains ("value1"))
                     {
                         textView22.setText (sharedPreferences1.getString ("value1",""));
 
-                    }
-                    else {
+                    }*/
+                   // else {
 
 
                         textView22.setText (getAddress (getContext ( ), currentLocation.getLatitude ( ), currentLocation.getLongitude ( )));
 
                         Toast.makeText (getContext ( ), currentLocation.getLatitude ( ) + "" + currentLocation.getLongitude ( ), Toast.LENGTH_SHORT).show ( );
-                    }
+                    //}
                     //SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     //assert supportMapFragment != null;
                     //supportMapFragment.getMapAsync(MapsActivity.this);
                 }
             }
         });
-    }*/
+    }
 
 
     /*@Override
@@ -268,7 +268,7 @@ public class HomeFragment extends Fragment{
 
 
 
-   /* public String getAddress(Context context,double lat, double lng) {
+    public String getAddress(Context context,double lat, double lng) {
 
         try {
             Geocoder geocoder = new Geocoder (context, Locale.getDefault ( ));
@@ -293,6 +293,6 @@ public class HomeFragment extends Fragment{
 
 
 
-    }*/
+    }
 }
 

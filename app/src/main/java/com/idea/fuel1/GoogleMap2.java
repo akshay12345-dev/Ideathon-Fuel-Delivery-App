@@ -85,7 +85,7 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
                lati1=29.736891;
                longi1=79.456451;
                 distance= getDistance(newLat,newLong,lati1,longi1);
-                Toast.makeText (getApplicationContext (),"Distance is "+String.valueOf (distance),Toast.LENGTH_LONG).show ();
+                Toast.makeText (getApplicationContext (),"Distance is "+ distance,Toast.LENGTH_LONG).show ();
 
 
             }

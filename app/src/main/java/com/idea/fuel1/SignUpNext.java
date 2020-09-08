@@ -26,12 +26,12 @@ public class SignUpNext extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_sign_up_next);
-        es6=(EditText)findViewById (R.id.et6);
-        es7=(EditText)findViewById (R.id.et7);
-        es9=(EditText)findViewById (R.id.et9);
-        es10=(EditText)findViewById (R.id.et10);
-        bss1=(Button)findViewById (R.id.reg);
-        ts1=(TextView)findViewById (R.id.ll1);
+        es6= findViewById (R.id.et6);
+        es7= findViewById (R.id.et7);
+        es9= findViewById (R.id.et9);
+        es10= findViewById (R.id.et10);
+        bss1= findViewById (R.id.reg);
+        ts1= findViewById (R.id.ll1);
         sss1=getIntent ().getStringExtra ("eee1");
         sss2=getIntent ().getStringExtra ("eee2");
         sss3=getIntent ().getStringExtra ("eee3");
@@ -67,7 +67,9 @@ public class SignUpNext extends AppCompatActivity {
 
             //Second e=new Second(id,firstName,lastName,timePick,datePick);
             db.child("customers").child(id).setValue(f1);
-            Toast.makeText(SignUpNext.this, "Successfully inserted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUpNext.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+            Intent icc1=new Intent (SignUpNext.this,Service2.class);
+            startActivity (icc1);
         }
         else{
             Toast.makeText(SignUpNext.this, "fill the empty fields", Toast.LENGTH_SHORT).show();

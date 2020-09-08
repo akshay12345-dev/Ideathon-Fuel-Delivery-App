@@ -39,10 +39,10 @@ String s6,s7;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_log_in);
-        uname=(EditText)findViewById (R.id.e1);
-        pass=(EditText)findViewById (R.id.e2);
-        bl1=(Button)findViewById (R.id.b1);
-        bl2=(Button)findViewById (R.id.b2);
+        uname= findViewById (R.id.e1);
+        pass= findViewById (R.id.e2);
+        bl1= findViewById (R.id.b1);
+        bl2= findViewById (R.id.b2);
         semail=uname.getText ().toString ();
         spass=pass.getText ().toString ();
 
@@ -96,9 +96,10 @@ String s6,s7;
         {
             Intent iii3=new Intent (LogIn.this,Bottom.class);
             startActivity (iii3);
+
         }
         else if(!email.equals (s6)&&!password.equals (s7)){
-            Toast.makeText (LogIn.this,"Email and Password do not match",Toast.LENGTH_SHORT).show ();
+            //Toast.makeText (LogIn.this,"Email and Password do not match",Toast.LENGTH_SHORT).show ();
         }
         else
         {

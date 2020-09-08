@@ -6,9 +6,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="100sp"
-        android:layout_height="100sp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="248dp"
+        android:layout_centerInParent="true"
         android:src="@drawable/mainlogo" />
 </RelativeLayout>

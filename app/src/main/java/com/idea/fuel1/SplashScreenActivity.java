@@ -24,7 +24,7 @@ public class SplashScreenActivity extends Activity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent go = new Intent(SplashScreenActivity.this, LogIn.class);
+                Intent go = new Intent(SplashScreenActivity.this, Option.class);
                 startActivity(go);
                 finish();
             }

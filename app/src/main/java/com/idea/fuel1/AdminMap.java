@@ -6,6 +6,7 @@ import java.util.List;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,28 +37,34 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import com.idea.fuel1.ui.home.HomeFragment;
 
-public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,GoogleMap.OnInfoWindowClickListener {
+public class AdminMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,GoogleMap.OnInfoWindowClickListener {
     //public static final String ROOT_URL = "http://192.168.43.61:8082/Example1";
     GoogleMap mMap;
+    EditText etLocation;
     MarkerOptions markerOptions;
     LatLng latLng;
 
     String addrs;
     String longi;
-    String lati;
+    String lati,location;
+    SharedPreferences sharedPreferences1;
+    DatabaseReference db= FirebaseDatabase.getInstance().getReference();
     //String addressText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_google_map1);
+        setContentView(R.layout.activity_admin_map);
+
 
         SupportMapFragment supportMapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.map);
+                getSupportFragmentManager().findFragmentById(R.id.map33);
         supportMapFragment.getMapAsync (this);
         // googleMap=supportMapFragment.getMap();
 
@@ -65,15 +73,17 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
         //googleMap = supportMapFragment.getMap();
 
         // Getting reference to btn_find of the layout activity_main
-        Button btn_find = findViewById(R.id.btn_find);
-        Button bcurrent= findViewById (R.id.bb1);
-        bcurrent.setOnClickListener (new View.OnClickListener (){
-            public void onClick(View v)
-            {
-                Intent ii11=new Intent (getApplicationContext (),GoogleMap2.class);
-                startActivity (ii11);
+        Button btn_find = findViewById(R.id.btn_search);
+        Button bsave= findViewById (R.id.bsb1);
+
+        bsave.setOnClickListener (new View.OnClickListener ( ) {
+            @Override
+            public void onClick(View v) {
+               addMap1();
+
             }
         });
+
 
 
 
@@ -86,10 +96,10 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
             @Override
             public void onClick(View v) {
                 // Getting reference to EditText to get the user input location
-                EditText etLocation = findViewById(R.id.et_location);
+                etLocation = findViewById(R.id.et_location);
 
                 // Getting user input location
-                String location = etLocation.getText().toString();
+                location = etLocation.getText().toString();
 
                 if(location!=null && !location.equals("")){
                     new GeocoderTask().execute(location);
@@ -99,6 +109,20 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
 
         // Setting button click event listener for the find button
         btn_find.setOnClickListener(findClickListener);
+
+    }
+    public void addMap1()
+    {
+        String id2=db.push ().getKey ();
+        sharedPreferences1=getApplicationContext ().getSharedPreferences ("mykey",0);
+        String ss10=sharedPreferences1.getString ("value1",null);
+
+        Third t11=new Third(id2,longi,lati,addrs,ss10);
+
+            //Second e=new Second(id,firstName,lastName,timePick,datePick);
+            db.child("zones").child(id2).setValue(t11);
+            Toast.makeText(AdminMap.this, "Location add Succeessfully", Toast.LENGTH_SHORT).show();
+
 
     }
 

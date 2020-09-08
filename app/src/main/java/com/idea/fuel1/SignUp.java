@@ -17,12 +17,12 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_sign_up);
-        bs1=(Button)findViewById (R.id.next);
-        es1=(EditText)findViewById (R.id.et1);
-        es2=(EditText)findViewById (R.id.et2);
-        es3=(EditText)findViewById (R.id.et3);
-        es4=(EditText)findViewById (R.id.et4);
-        ess5=(EditText)findViewById (R.id.et5);
+        bs1= findViewById (R.id.next);
+        es1= findViewById (R.id.et1);
+        es2= findViewById (R.id.et2);
+        es3= findViewById (R.id.et3);
+        es4= findViewById (R.id.et4);
+        ess5= findViewById (R.id.et5);
 
         bs1.setOnClickListener (new View.OnClickListener ( ) {
             @Override

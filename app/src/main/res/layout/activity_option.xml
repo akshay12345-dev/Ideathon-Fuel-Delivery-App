@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey"
+    android:padding="20sp"
+    android:gravity="center"
+    tools:context=".Option">
+    <ImageView
+        android:layout_width="210dp"
+        android:layout_height="200dp"
+        android:src="@drawable/fuelfront1" />
+
+
+
+    <Button
+        android:id="@+id/admin1"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/cart_set_address_button_style"
+        android:text="ADMIN"
+        android:textColor="#ffffff"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/customer1"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/cart_set_address_button_style"
+        android:text="CUSTOMER"
+        android:textColor="#ffffff"
+        android:textAlignment="center" />
+
+</LinearLayout>
