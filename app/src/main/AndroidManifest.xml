@@ -18,7 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Service2"></activity>
+        <activity
+            android:name=".AdminTask2"
+            android:label="@string/title_activity_admin_task2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Service2" />
         <activity android:name=".AdminSignNext2" />
         <activity android:name=".AdminSignUp2" />
         <activity android:name=".AdminLogin2" />

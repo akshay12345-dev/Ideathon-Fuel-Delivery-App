@@ -3,6 +3,7 @@ package com.idea.fuel1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,6 +22,7 @@ public class AdminSignNext extends AppCompatActivity {
     TextView tsn1;
     String ssss1,ssss2,ssss3,ssss4,ssss5,ssss6,ssss7,ssss8;
     DatabaseReference db= FirebaseDatabase.getInstance().getReference();
+    SharedPreferences sharedPreferences8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,10 @@ public class AdminSignNext extends AppCompatActivity {
         ssss2=getIntent ().getStringExtra ("license");
         ssss3=getIntent ().getStringExtra ("adhaar");
         ssss4=getIntent ().getStringExtra ("email");
+        SharedPreferences sharedPref66=getSharedPreferences ("mykey6",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPref66.edit ();
+        editor.putString ("value66",ssss1);
+        editor.apply ();
         tsn1.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {
@@ -77,6 +83,10 @@ public class AdminSignNext extends AppCompatActivity {
         ssss7=etsn3.getText ().toString ();
         ssss8=etsn4.getText ().toString ();
         String id1=db.push ().getKey ();
+        sharedPreferences8=getSharedPreferences ("mykey8",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences8.edit ();
+        editor.putString ("value8",ssss5);
+        editor.apply ();
         Second f11=new Second(id1,ssss1,ssss2,ssss3,ssss4,ssss5,ssss6,ssss7,ssss8);
         if(!TextUtils.isEmpty(ssss1)&&!TextUtils.isEmpty(ssss2)&&!TextUtils.isEmpty (ssss3)&&!TextUtils.isEmpty (ssss4)&&!TextUtils.isEmpty (ssss5)&&!TextUtils.isEmpty (ssss6)&&!TextUtils.isEmpty (ssss7)&&!TextUtils.isEmpty (ssss8)){
 

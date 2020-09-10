@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -37,9 +38,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.idea.fuel1.ui.dashboard.DashboardFragment;
 import com.idea.fuel1.ui.home.HomeFragment;
 
 public class AdminMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,GoogleMap.OnInfoWindowClickListener {
@@ -48,10 +54,12 @@ public class AdminMap extends FragmentActivity implements OnMapReadyCallback, Go
     EditText etLocation;
     MarkerOptions markerOptions;
     LatLng latLng;
+    String s666,s777;
 
     String addrs;
     String longi;
     String lati,location;
+    SharedPreferences sharedPreferences4;
     SharedPreferences sharedPreferences1;
     DatabaseReference db= FirebaseDatabase.getInstance().getReference();
     //String addressText;
@@ -149,6 +157,7 @@ public class AdminMap extends FragmentActivity implements OnMapReadyCallback, Go
             mMap.setMyLocationEnabled(true);
         }
         mMap.setOnMarkerClickListener (this);
+        mMap.setOnInfoWindowClickListener (this);
 
     }
 
@@ -165,6 +174,49 @@ public class AdminMap extends FragmentActivity implements OnMapReadyCallback, Go
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+                s777=marker.getTitle ();
+         sharedPreferences4=getSharedPreferences ("mykey4",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences4.edit ();
+        editor.putString ("value4",s777);
+        editor.apply ();
+
+                validLocation();
+                if(marker.getTitle ().equals (s666))
+                {
+                   Intent iadl=new Intent (AdminMap.this, AdminTask2.class);
+                   //iadl.putExtra ("realaddress",s666);
+                    startActivity (iadl);
+                }
+
+    }
+    public void validLocation()
+    {
+
+        Query query= FirebaseDatabase.getInstance ().getReference ("zones").orderByChild ("adrs22").equalTo (s777);
+        query.addListenerForSingleValueEvent (new ValueEventListener ( ) {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds1:snapshot.getChildren ()){
+                    s666=ds1.child("adrs22").getValue ().toString ();
+                    //s777=ds1.child ("password11").getValue ().toString ();
+
+
+
+
+
+                    //   e3.setText (s8);
+                }
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
 
     }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation1"
+    app:startDestination="@+id/nav_deliver">
+    <fragment
+        android:id="@+id/nav_deliver"
+        android:name="com.idea.fuel1.ui.deliver.fragment_deliver"
+        android:label="@string/deliver"
+        tools:layout="@layout/fragment_deliver" >
+    <action
+        android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+        app:destination="@id/nav_fuelupdate" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_fuelupdate"
+        android:name="com.idea.fuel1.ui.update.fragment_update"
+        android:label="@string/fuelupdate"
+        tools:layout="@layout/fragment_update" >
+    <action
+        android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+        app:destination="@id/nav_view23" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_view23"
+        android:name="com.idea.fuel1.ui.view.fragment_view"
+        android:label="@string/view1"
+        tools:layout="@layout/fragment_view" >
+    <action
+        android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+        app:destination="@id/nav_logout1" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_logout1"
+        android:name="com.idea.fuel1.ui.logout.fragment_logout"
+        android:label="@string/logout"
+        tools:layout="@layout/fragment_logout" >
+    <action
+        android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+        app:destination="@id/nav_share" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.idea.fuel1.ui.share.fragment_share"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.idea.fuel1.ui.send.fragment_send"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+
+</navigation>

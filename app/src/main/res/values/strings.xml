@@ -1,12 +1,46 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">FuelDelivery1</string>
     <string name="title_activity_bottom">Bottom</string>
     <string name="title_home">Home</string>
-    <string name="title_book">Details</string>
-    <string name="title_account">Account</string>
+    <string name="title_book">Add Details of delivery boy</string>
+    <string name="title_account">Update details of fuel</string>
     <string name="title_activity_google_map1">Map</string>
     <string name="str_btn_find">FIND</string>
     <string name="hnt_et_location">hint</string>
     <string name="title_activity_admin_map">Map</string>
+    <string name="title_activity_admin_work">AdminWork</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_display">View Details</string>
+
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="deliver">Add Details of delivery boy</string>
+    <string name="fuelupdate">Update Details of Fuel</string>
+    <string name="view1">View Details</string>
+    <string name="logout">Logout</string>
+
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <!-- Bottom Navigation -->
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_admin_task2">AdminTask2</string>
 
 </resources>
