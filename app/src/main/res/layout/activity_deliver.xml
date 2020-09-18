@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_red_light"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_account_circle_black_24dp"
+                    android:tint="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="DELIVERY BOY DETAILS"
+                    android:textColor="#FFFF"
+                    android:textSize="22dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/linearLayout1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-10dp"
+                android:rotation="45"
+                android:src="@drawable/square" />
+
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/i2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/holo_red_light"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_pin_drop_black_24dp"
+                    android:tint="#FFFF" />
+
+                <EditText
+                    android:id="@+id/edd1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/i2"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/i2"
+                    android:background="@color/editTextBG"
+                    android:hint="Petrol Pump Name"
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/i3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/holo_red_light"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_perm_identity_black_24dp"
+                    android:tint="#FFFF" />
+
+                <EditText
+                    android:id="@+id/edd2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/i3"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/i3"
+                    android:background="@color/editTextBG"
+                    android:hint="Delivery Boy Name"
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/i4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/holo_red_light"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_contact_phone_black_24dp"
+                    android:tint="#FFFF" />
+
+                <EditText
+                    android:id="@+id/edd3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/i4"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/i4"
+                    android:background="@color/editTextBG"
+                    android:hint="Contact"
+
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="170dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/i5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/holo_red_light"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_place_black_24dp"
+                    android:tint="#FFFF" />
+
+                <EditText
+                    android:id="@+id/edd4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/i5"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/i5"
+                    android:background="@color/editTextBG"
+                    android:hint="Location"
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/btnLn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout3"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="40dp"
+                android:background="@android:color/holo_red_light"
+                android:fontFamily="sans-serif-medium"
+                android:text="SUBMIT"
+                android:textColor="#FFFF" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

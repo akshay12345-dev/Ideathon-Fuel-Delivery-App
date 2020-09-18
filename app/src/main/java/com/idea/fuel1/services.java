@@ -14,8 +14,8 @@ public class services extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_services);
-        bfuel=(Button)findViewById (R.id.fuel1);
-        bmechanics=(Button)findViewById (R.id.mechanic1);
+        bfuel= findViewById (R.id.fuel1);
+        bmechanics= findViewById (R.id.mechanic1);
         bfuel.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {

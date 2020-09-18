@@ -45,8 +45,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.idea.fuel1.ui.dashboard.DashboardFragment;
+//import com.idea.fuel1.ui.dashboard.DashboardFragment;
 import com.idea.fuel1.ui.home.HomeFragment;
+import com.idea.fuel1.deliver;
 
 public class AdminMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,GoogleMap.OnInfoWindowClickListener {
     //public static final String ROOT_URL = "http://192.168.43.61:8082/Example1";
@@ -124,6 +125,21 @@ public class AdminMap extends FragmentActivity implements OnMapReadyCallback, Go
         String id2=db.push ().getKey ();
         sharedPreferences1=getApplicationContext ().getSharedPreferences ("mykey",0);
         String ss10=sharedPreferences1.getString ("value1",null);
+
+        SharedPreferences sharedPreferenceslati=getSharedPreferences ("latim",0);
+        SharedPreferences.Editor editor1=sharedPreferenceslati.edit ();
+        editor1.putString ("latvalue",lati);
+        editor1.apply ();
+        SharedPreferences sharedPreferenceslongi=getSharedPreferences ("longim",0);
+        SharedPreferences.Editor editor2=sharedPreferenceslongi.edit ();
+        editor2.putString ("longvalue",longi);
+        editor2.apply ();
+        SharedPreferences sharedPreferencesesm=getSharedPreferences ("adboys",0);
+        SharedPreferences.Editor editorjk=sharedPreferencesesm.edit ();
+        editorjk.putString ("adboys1",addrs);
+        editorjk.apply ();
+
+
 
         Third t11=new Third(id2,longi,lati,addrs,ss10);
 

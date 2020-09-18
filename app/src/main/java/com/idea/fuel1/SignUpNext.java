@@ -3,6 +3,7 @@ package com.idea.fuel1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,6 +21,7 @@ public class SignUpNext extends AppCompatActivity {
     Button bss1;
     TextView ts1;
     String sss1,sss2,sss3,sss4,sss5,sss6,sss7,sss8,sss9;
+    SharedPreferences sstp;
     DatabaseReference db= FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -61,6 +63,10 @@ public class SignUpNext extends AppCompatActivity {
         sss7=es7.getText ().toString ();
         sss8=es9.getText ().toString ();
         sss9=es10.getText ().toString ();
+        sstp=getSharedPreferences ("custcon",MODE_PRIVATE);
+        SharedPreferences.Editor ecm=sstp.edit ();
+        ecm.putString ("customercon",sss8);
+        ecm.apply ();
         String id=db.push ().getKey ();
         First f1=new First (id,sss1,sss2,sss3,sss4,sss5,sss6,sss7,sss8,sss9);
         if(!TextUtils.isEmpty(sss1)&&!TextUtils.isEmpty(sss2)&&!TextUtils.isEmpty (sss3)&&!TextUtils.isEmpty (sss4)&&!TextUtils.isEmpty (sss5)&&!TextUtils.isEmpty (sss6)&&!TextUtils.isEmpty (sss7)&&!TextUtils.isEmpty (sss8)&&!TextUtils.isEmpty (sss9)){

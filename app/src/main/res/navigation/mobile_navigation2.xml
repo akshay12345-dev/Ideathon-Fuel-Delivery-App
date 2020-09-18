@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_dashboard">
+    app:startDestination="@+id/navigation_notifications">
 
 
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.idea.fuel1.ui.dashboard.DashboardFragment"
+    <activity
+        android:id="@+id/navigation_deliver"
+        android:name="com.idea.fuel1.deliver"
         android:label="@string/title_book"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_deliver" />
 
     <fragment
         android:id="@+id/navigation_notifications"

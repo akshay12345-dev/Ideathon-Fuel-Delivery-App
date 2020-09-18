@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/navigation_dashboard"
+            android:id="@+id/navigation_deliver"
             android:icon="@drawable/ic_portrait_black_24dp"
             android:title="Add details of delivery boy"/>
         <item

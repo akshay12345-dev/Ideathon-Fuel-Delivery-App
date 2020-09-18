@@ -218,19 +218,14 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(ROOT_URL) //Setting the Root URL
                 .build(); //Finally building the adapter
-
         //Creating object for our interface
         RegisterAPI2 api = adapter.create(RegisterAPI2.class);
-
         //Defining the method insertuser of our interface
         api.LocationUser(
-
                 //Passing the values by getting it from editTexts
                 addrs,
                 longi,
                 lati,
-
-
                 //Creating an anonymous callback
                 new Callback<Response>() {
                     @Override
@@ -238,25 +233,19 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
                         //On success we will read the server's output using bufferedreader
                         //Creating a bufferedreader object
                         BufferedReader reader = null;
-
                         //An string to store output from the server
                         String output = "";
-
                         try {
                             //Initializing buffered reader
                             reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
-
                             //Reading the output in the string
                             output = reader.readLine();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                         //Displaying the output as a toast
                         Toast.makeText(GoogleMap1.this, output, Toast.LENGTH_LONG).show();
                     }
-
-
                     @Override
                     public void failure(RetrofitError error) {
                         //If any error occured displaying the error as toast
@@ -264,8 +253,6 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
                     }
                 }
         );
-
-
         //Here we will handle the http request to insert user to mysql db
     }*/
 
@@ -273,7 +260,6 @@ public class GoogleMap1 extends FragmentActivity implements OnMapReadyCallback, 
 
 
 }
-
 
 
 

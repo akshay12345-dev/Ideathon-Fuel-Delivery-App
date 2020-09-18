@@ -3,6 +3,8 @@ package com.idea.fuel1;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -37,12 +39,19 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 
 
-public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
+public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener,GoogleMap.OnInfoWindowClickListener {
     //public static final String ROOT_URL = "http://192.168.43.61:8082/Example1";
     String addrs;
     String longi;
@@ -51,39 +60,48 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
     double newLat;
     double newLong;
     double distance;
-    double distance1;
+    double distance1,distance2,distance3,distance4,distance5;
     double lati1=0.0;
     double longi1=0.0;
+    String sdnot;
+    String sss9,sss10,sss11,sss12,sss13;
+    GoogleMap googleMap1;
+    String petroret,diret;
+    SharedPreferences sharedPreferencescheck,sharedPreferencesnot,sharedPreferenceslat,sharedPreferenceslong;
 
 
-    LatLng latlng1,latlng2;
+    LatLng latlng1,latlng2,latlng3,latlng4,latlng5,latlng6,latLngmain;
     LocationManager locationManager;
     LocationListener locationListener;
     Location currentLocation;
     Marker marker1;
+    //DatabaseReference db= FirebaseDatabase.getInstance().getReference();
 
     String fullAdd=null;
+    String sbf1,sbf2;
     String ss5;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int FOREGROUND_ID = 1337;
     private static final double EARTH_RADIUS = 6371000f;
 
     private static final int REQUEST_CODE = 101;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_map1);
+
         locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener=new LocationListener ( ) {
             @Override
             public void onLocationChanged(Location location) {
-               // newLat=location.getLatitude ();
-               // newLong=location.getLongitude ();
-               // double lati1=Double.parseDouble (lati);
-               // double longi1=Double.parseDouble (longi);
+                // newLat=location.getLatitude ();
+                // newLong=location.getLongitude ();
+                // double lati1=Double.parseDouble (lati);
+                // double longi1=Double.parseDouble (longi);
 
-               lati1=29.736891;
-               longi1=79.456451;
+                lati1=29.736891;
+                longi1=79.456451;
                 distance= getDistance(newLat,newLong,lati1,longi1);
                 Toast.makeText (getApplicationContext (),"Distance is "+ distance,Toast.LENGTH_LONG).show ();
 
@@ -131,23 +149,50 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     assert supportMapFragment != null;
                     supportMapFragment.getMapAsync(GoogleMap2.this);
+                   /* sharedPreferencesnot=getApplicationContext ().getSharedPreferences ("delContact",0);
+                    sdnot=sharedPreferencesnot.getString ("v2",null);
+                    sharedPreferenceslat=getApplicationContext ().getSharedPreferences ("dellatu",0);
+                    sbf1=sharedPreferenceslat.getString ("v3",null);
+                    sharedPreferenceslong=getApplicationContext ().getSharedPreferences ("dellongu",0);
+                    sbf2=sharedPreferenceslong.getString ("v4",null);*/
                 }
             }
         });
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        googleMap1=googleMap;
+
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        latlng2=new LatLng (18.6523,73.8526);
+        String mf5=getAddress (getApplicationContext (),latLng.latitude,latLng.longitude);
+
+        //latLngmain=new LatLng (Double.parseDouble (sbf1),Double.parseDouble (sbf2));
+
+        latlng2=new LatLng (18.449273873,73.8704887);
+        latlng3=new LatLng (18.5992,73.927);
+        latlng4=new LatLng (18.6530089,73.85264389999999);
+        latlng5=new LatLng (18.6215256,73.8415369);
+        latlng6=new LatLng (18.6430089,73.83966999);
+        SharedPreferences sharedPreferencessstp=getSharedPreferences ("custloc",MODE_PRIVATE);
+        SharedPreferences.Editor edloc=sharedPreferencessstp.edit ();
+        edloc.putString ("cusmd4",mf5);
+        edloc.apply ();
 
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(getAddress (getApplicationContext (),latLng.latitude,latLng.longitude));
         markerOptions.icon (BitmapDescriptorFactory.defaultMarker (BitmapDescriptorFactory.HUE_YELLOW));
+        //MarkerOptions markerOptionsmain = new MarkerOptions().position(latLng).title(getAddress (getApplicationContext (),latLngmain.latitude,latLngmain.longitude));
+        //markerOptionsmain.icon (BitmapDescriptorFactory.defaultMarker (BitmapDescriptorFactory.HUE_BLUE));
         distance1=CalculationByDistance (latLng,latlng2);
+        distance2=CalculationByDistance (latLng,latlng3);
+        distance3=CalculationByDistance (latLng,latlng4);
+        distance4=CalculationByDistance (latLng,latlng5);
+        distance5=CalculationByDistance (latLng,latlng6);
         Log.i("deliver2 is",String.valueOf (distance1));
         if(distance1<4.00000000000)
         {
 
-          // googleMap.addMarker (new MarkerOptions ().position (latlng2).title (getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
+            // googleMap.addMarker (new MarkerOptions ().position (latlng2).title (getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
             //googleMap.moveCamera (CameraUpdateFactory.newLatLng (latlng2));
             MarkerOptions markerOptions1 = new MarkerOptions().position(latlng2).title(getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude));
             googleMap.animateCamera(CameraUpdateFactory.newLatLng(latlng2));
@@ -156,12 +201,61 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
             marker1=googleMap.addMarker (markerOptions1);
 
         }
-       // MarkerOptions markerOptions1 = new MarkerOptions().position(latLng).title(getAddress (getApplicationContext (),latLng.latitude,latLng.longitude,));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
-        googleMap.addMarker(markerOptions);
-        marker1=googleMap.addMarker (markerOptions);
-        googleMap.setOnMarkerClickListener (this);
+        if(distance2<4.00000000000)
+        {
+
+            // googleMap.addMarker (new MarkerOptions ().position (latlng2).title (getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
+            //googleMap.moveCamera (CameraUpdateFactory.newLatLng (latlng2));
+            MarkerOptions markerOptions2 = new MarkerOptions().position(latlng3).title(getAddress (getApplicationContext (),latlng3.latitude,latlng3.longitude));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLng(latlng3));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng3, 5));
+            googleMap1.addMarker(markerOptions2);
+            marker1=googleMap1.addMarker (markerOptions2);
+
+        }
+        if(distance3<4.00000000000)
+        {
+
+            // googleMap.addMarker (new MarkerOptions ().position (latlng2).title (getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
+            //googleMap.moveCamera (CameraUpdateFactory.newLatLng (latlng2));
+            MarkerOptions markerOptions3 = new MarkerOptions().position(latlng4).title(getAddress (getApplicationContext (),latlng4.latitude,latlng4.longitude));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLng(latlng4));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng4, 5));
+            googleMap1.addMarker(markerOptions3);
+            marker1=googleMap1.addMarker (markerOptions3);
+
+        }
+        if(distance4<4.00000000000)
+        {
+
+            // googleMap.addMarker (new MarkerOptions ().position (latlng2).title (getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
+            //googleMap.moveCamera (CameraUpdateFactory.newLatLng (latlng2));
+            MarkerOptions markerOptions4 = new MarkerOptions().position(latlng5).title(getAddress (getApplicationContext (),latlng5.latitude,latlng5.longitude));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLng(latlng5));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng5, 5));
+            googleMap1.addMarker(markerOptions4);
+            marker1=googleMap1.addMarker (markerOptions4);
+
+        }
+        if(distance5<4.00000000000)
+        {
+
+            // googleMap.addMarker (new MarkerOptions ().position (latlng2).title (getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
+            //googleMap.moveCamera (CameraUpdateFactory.newLatLng (latlng2));
+            MarkerOptions markerOptions5 = new MarkerOptions().position(latlng6).title(getAddress (getApplicationContext (),latlng6.latitude,latlng6.longitude));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLng(latlng6));
+            googleMap1.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng6, 5));
+            googleMap1.addMarker(markerOptions5);
+            marker1=googleMap1.addMarker (markerOptions5);
+
+        }
+        // MarkerOptions markerOptions1 = new MarkerOptions().position(latLng).title(getAddress (getApplicationContext (),latLng.latitude,latLng.longitude,));
+        googleMap1.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap1.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+        googleMap1.addMarker(markerOptions);
+        marker1=googleMap1.addMarker (markerOptions);
+        googleMap1.setOnMarkerClickListener (this);
+        googleMap1.setOnInfoWindowClickListener (this);
 
 
 
@@ -181,7 +275,7 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
 
         try{
             Geocoder geocoder= new Geocoder(ctx, Locale.getDefault());
-            List<android.location.Address> addresses = geocoder.getFromLocation(lat,lng,1);
+            List<Address> addresses = geocoder.getFromLocation(lat,lng,1);
             if(addresses.size()>0){
                 Address address = addresses.get(0);
                 fullAdd = address.getAddressLine(0);
@@ -200,11 +294,10 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
                     addresses1=geocoder3.getFromLocation (latlng2.latitude,latlng2.longitude,1);
                     String sslp=addresses1.get (0).getAddressLine (0);
                     return sslp;
-
                 }*/
                 //Toast.makeText(GoogleMap2.this,"Distance is "+String.valueOf (distance1)+"km",Toast.LENGTH_LONG).show ();
 
-               // Toast.makeText(GoogleMap2.this,"Distance is "+String.valueOf (dd1)+"km",Toast.LENGTH_LONG).show ();
+                // Toast.makeText(GoogleMap2.this,"Distance is "+String.valueOf (dd1)+"km",Toast.LENGTH_LONG).show ();
 
                 longi=Double.toString (bb);
                 lati=Double.toString (bb1);
@@ -231,19 +324,14 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(ROOT_URL) //Setting the Root URL
                 .build(); //Finally building the adapter
-
         //Creating object for our interface
         RegisterAPI2 api = adapter.create(RegisterAPI2.class);
-
         //Defining the method insertuser of our interface
         api.LocationUser(
-
                 //Passing the values by getting it from editTexts
                 addrs,
                 longi,
                 lati,
-
-
                 //Creating an anonymous callback
                 new Callback <Response> () {
                     @Override
@@ -251,25 +339,19 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
                         //On success we will read the server's output using bufferedreader
                         //Creating a bufferedreader object
                         BufferedReader reader = null;
-
                         //An string to store output from the server
                         String output = "";
-
                         try {
                             //Initializing buffered reader
                             reader = new BufferedReader(new InputStreamReader (result.getBody().in()));
-
                             //Reading the output in the string
                             output = reader.readLine();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                         //Displaying the output as a toast
                         Toast.makeText(google_map_2.this, output, Toast.LENGTH_LONG).show();
                     }
-
-
                     @Override
                     public void failure(RetrofitError error) {
                         //If any error occured displaying the error as toast
@@ -277,15 +359,13 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
                     }
                 }
         );
-
-
         //Here we will handle the http request to insert user to mysql db
     }*/
 
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-       // LocationtUser ();
+        // LocationtUser ();
         return false;
     }
     public double getDistance(double lat1, double lon1, double lat2, double lon2){
@@ -336,11 +416,125 @@ public class GoogleMap2 extends FragmentActivity implements OnMapReadyCallback,G
         int meterInDec = Integer.parseInt (newFormat.format(meter));
         Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
                 + " Meter   " + meterInDec);
-         dd1=Radius*c;
+        dd1=Radius*c;
         Log.i ("Distance is", String.valueOf (dd1));
 
         return Radius * c;
     }
 
 
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        sss9=marker.getTitle ();
+        final Marker m1 = googleMap1.addMarker(new MarkerOptions().position(new LatLng(latlng2.latitude, latlng2.longitude)).title(getAddress (getApplicationContext (),latlng2.latitude,latlng2.longitude)));
+        final Marker m2 = googleMap1.addMarker(new MarkerOptions().position(new LatLng(latlng3.latitude, latlng3.longitude)).title(getAddress (getApplicationContext (),latlng3.latitude,latlng3.longitude)));
+        final Marker m3 = googleMap1.addMarker(new MarkerOptions().position(new LatLng(latlng4.latitude, latlng4.longitude)).title(getAddress (getApplicationContext (),latlng4.latitude,latlng4.longitude)));
+        final Marker m4 = googleMap1.addMarker(new MarkerOptions().position(new LatLng(latlng5.latitude, latlng3.longitude)).title(getAddress (getApplicationContext (),latlng5.latitude,latlng5.longitude)));
+        final Marker m5 = googleMap1.addMarker(new MarkerOptions().position(new LatLng(latlng6.latitude, latlng6.longitude)).title(getAddress (getApplicationContext (),latlng6.latitude,latlng6.longitude)));
+
+        validLocation2(latlng2);
+        validLocation2(latlng3);
+        validLocation2(latlng4);
+        validLocation2(latlng5);
+        validLocation2(latlng6);
+        //  sharedPreferencescheck=getApplicationContext ().getSharedPreferences ("mykey4",0);
+        // String ss25=sharedPreferencescheck.getString ("value4",null);
+
+
+
+        // final Marker m3 = googleMap1.addMarker(new MarkerOptions().position(new LatLng(18.499786, 73.821011)).title("City Pride Kothrud"));
+      /*  if(marker.getTitle ().equals (sss13))
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+            startActivity (ic1);
+
+        }*/
+        if(m1.getTitle ().equals (sss9))
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+
+            //ic1.putExtra ("ad2s",m1.getTitle ());
+            startActivity (ic1);
+
+        }
+        if(m2.getTitle ().equals (sss9))
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+
+            startActivity (ic1);
+
+        }
+        if(m3.getTitle ().equals (sss9))
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+
+            startActivity (ic1);
+
+        }
+        if(m4.getTitle ().equals (sss9))
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+
+            startActivity (ic1);
+
+        }
+        if(m5.getTitle ().equals (sss9))
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+
+            startActivity (ic1);
+
+        }
+
+     /*   if(marker.getPosition ()==m2.getPosition ())
+        {
+            Intent ic1=new Intent (GoogleMap2.this,CustomerBook.class);
+            ic1.putExtra ("email",sss12);
+            ic1.putExtra ("address",sss13);
+            startActivity (ic1);
+
+        }*/
+
+    }
+    public void validLocation2(LatLng lttg)
+    {
+        double dj1=lttg.latitude;
+        String sj1=Double.toString (dj1);
+        Query query= FirebaseDatabase.getInstance ().getReference ("zones").orderByChild ("adrs22").equalTo (sss9);
+        query.addListenerForSingleValueEvent (new ValueEventListener ( ) {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds1:snapshot.getChildren ()){
+
+                    //sss11=ds1.child ("longi22").getValue ().toString ();
+                    sss12=ds1.child ("email22").getValue ().toString ();
+                    sss13=ds1.child ("adrs22").getValue ().toString ();
+
+
+
+
+
+                    //   e3.setText (s8);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }

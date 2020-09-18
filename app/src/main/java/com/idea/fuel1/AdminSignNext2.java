@@ -18,12 +18,12 @@ public class AdminSignNext2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_admin_sign_next2);
-        emll5=(EditText)findViewById (R.id.ets66);
-        emll6=(EditText)findViewById (R.id.ets77);
-        emll7=(EditText)findViewById (R.id.ets88);
-        emll8=(EditText)findViewById (R.id.ets88);
-        btmll1=(Button)findViewById (R.id.btsreg1);
-        tmll1=(TextView)findViewById (R.id.etsll11);
+        emll5= findViewById (R.id.ets66);
+        emll6= findViewById (R.id.ets77);
+        emll7= findViewById (R.id.ets88);
+        emll8= findViewById (R.id.ets88);
+        btmll1= findViewById (R.id.btsreg1);
+        tmll1= findViewById (R.id.etsll11);
         tmll1.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {

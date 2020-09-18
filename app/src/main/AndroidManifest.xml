@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.idea.fuel1">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
+         location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.    READ_GSERVICES" />
 
     <application
@@ -18,15 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".AdminTask2"
-            android:label="@string/title_activity_admin_task2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Service2" />
-        <activity android:name=".AdminSignNext2" />
-        <activity android:name=".AdminSignUp2" />
-        <activity android:name=".AdminLogin2" />
-        <activity android:name=".services" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,16 +34,31 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".GoogleMap2"
+            android:label="@string/title_activity_google_map2"></activity>
+        <activity
+            android:name=".GoogleMap1"
+            android:label="@string/title_activity_google_map1" />
+        <activity android:name=".deliver" />
+        <activity android:name=".BookDetails" />
+        <activity android:name=".Payment" />
+        <activity android:name=".CustomerBook" />
+        <activity
+            android:name=".AdminTask2"
+            android:label="@string/title_activity_admin_task2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Service2" />
+        <activity android:name=".AdminSignNext2" />
+        <activity android:name=".AdminSignUp2" />
+        <activity android:name=".AdminLogin2" />
+        <activity android:name=".services" />
+        <activity
             android:name=".AdminMap"
             android:label="@string/title_activity_admin_map" />
         <activity android:name=".AdminSignNext" />
         <activity android:name=".AdminSignUp" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".Option" />
-        <activity android:name=".GoogleMap2" />
-        <activity
-            android:name=".GoogleMap1"
-            android:label="@string/title_activity_google_map1" />
         <activity
             android:name=".Bottom"
             android:label="@string/title_activity_bottom" />

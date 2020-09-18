@@ -16,11 +16,11 @@ public class AdminSignUp2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_admin_sign_up2);
-        emll1=(EditText)findViewById (R.id.ets11);
-        emll2=(EditText)findViewById (R.id.ets22);
-        emll3=(EditText)findViewById (R.id.ets33);
-        emll4=(EditText)findViewById (R.id.ets44);
-        bmll1=(Button)findViewById (R.id.btsnext111);
+        emll1= findViewById (R.id.ets11);
+        emll2= findViewById (R.id.ets22);
+        emll3= findViewById (R.id.ets33);
+        emll4= findViewById (R.id.ets44);
+        bmll1= findViewById (R.id.btsnext111);
         bmll1.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {

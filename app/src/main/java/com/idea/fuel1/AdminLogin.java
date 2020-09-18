@@ -27,10 +27,10 @@ public class AdminLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_admin_login);
-        eel1=(EditText)findViewById (R.id.etl1);
-        eel2=(EditText)findViewById (R.id.etl2);
-        bbl1=(Button)findViewById (R.id.btl1);
-        bbl2=(Button)findViewById (R.id.btl2);
+        eel1= findViewById (R.id.etl1);
+        eel2= findViewById (R.id.etl2);
+        bbl1= findViewById (R.id.btl1);
+        bbl2= findViewById (R.id.btl2);
         bbl1.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {

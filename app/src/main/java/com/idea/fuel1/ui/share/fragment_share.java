@@ -1,5 +1,6 @@
 package com.idea.fuel1.ui.share;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class fragment_share extends Fragment {
         super.onActivityCreated (savedInstanceState);
         mViewModel = ViewModelProviders.of (this).get (FragmentShareViewModel.class);
         // TODO: Use the ViewModel
+
     }
 
 }

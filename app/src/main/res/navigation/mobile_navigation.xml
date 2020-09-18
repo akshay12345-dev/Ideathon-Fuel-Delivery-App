@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.idea.fuel1.ui.dashboard.DashboardFragment"
-        android:label="@string/title_book"
+        android:id="@+id/navigation_send"
+        android:name="com.idea.fuel1.ui.send.fragment_send"
+        android:label="View Details of Customer"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.idea.fuel1.ui.notifications.NotificationsFragment"
-        android:label="@string/title_account"
+        android:id="@+id/navigation_share"
+        android:name="com.idea.fuel1.ui.share.fragment_share"
+        android:label="Track Delivery Boy"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

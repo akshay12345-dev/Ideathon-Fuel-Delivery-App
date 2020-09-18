@@ -8,6 +8,7 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -32,8 +33,9 @@ import com.google.firebase.database.ValueEventListener;
 public class LogIn extends AppCompatActivity {
 Button bl1,bl2;
 EditText uname,pass;
-String semail,spass;
+String semail,spass,demail;
 String s6,s7;
+SharedPreferences sharedPreferences91;
     FirebaseAuth fb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ String s6,s7;
         bl2= findViewById (R.id.b2);
         semail=uname.getText ().toString ();
         spass=pass.getText ().toString ();
+
 
         fb=FirebaseAuth.getInstance();
         FirebaseUser currentUser = fb.getCurrentUser();
@@ -69,9 +72,13 @@ String s6,s7;
     }
     public void validate()
     {
-        String email=uname.getText().toString();
+        demail=uname.getText().toString();
         String password=pass.getText().toString();
-        Query query= FirebaseDatabase.getInstance ().getReference ("customers").orderByChild ("email").equalTo (email);
+        sharedPreferences91=getSharedPreferences ("custemailll2",MODE_PRIVATE);
+        SharedPreferences.Editor editor23=sharedPreferences91.edit ();
+        editor23.putString ("value1",demail);
+        editor23.apply ();
+        Query query= FirebaseDatabase.getInstance ().getReference ("customers").orderByChild ("email").equalTo (demail);
         query.addListenerForSingleValueEvent (new ValueEventListener ( ) {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,13 +99,13 @@ String s6,s7;
 
             }
         });
-        if(email.equals (s6)&&password.equals (s7))
+        if(demail.equals (s6)&&password.equals (s7))
         {
             Intent iii3=new Intent (LogIn.this,Bottom.class);
             startActivity (iii3);
 
         }
-        else if(!email.equals (s6)&&!password.equals (s7)){
+        else if(!demail.equals (s6)&&!password.equals (s7)){
             //Toast.makeText (LogIn.this,"Email and Password do not match",Toast.LENGTH_SHORT).show ();
         }
         else

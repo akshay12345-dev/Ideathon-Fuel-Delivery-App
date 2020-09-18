@@ -23,6 +23,7 @@ public class AdminSignNext extends AppCompatActivity {
     String ssss1,ssss2,ssss3,ssss4,ssss5,ssss6,ssss7,ssss8;
     DatabaseReference db= FirebaseDatabase.getInstance().getReference();
     SharedPreferences sharedPreferences8;
+    SharedPreferences sstp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,9 @@ public class AdminSignNext extends AppCompatActivity {
         SharedPreferences.Editor editor=sharedPref66.edit ();
         editor.putString ("value66",ssss1);
         editor.apply ();
+        SharedPreferences sharedPreferences786=getSharedPreferences ("adminmail5",MODE_PRIVATE);
+        SharedPreferences.Editor etx45=sharedPreferences786.edit ();
+        etx45.putString ("admail65",ssss4);
         tsn1.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {
@@ -87,6 +91,10 @@ public class AdminSignNext extends AppCompatActivity {
         SharedPreferences.Editor editor=sharedPreferences8.edit ();
         editor.putString ("value8",ssss5);
         editor.apply ();
+        sstp=getSharedPreferences ("adcon",MODE_PRIVATE);
+        SharedPreferences.Editor ecm=sstp.edit ();
+        ecm.putString ("admincon",ssss7);
+        ecm.apply ();
         Second f11=new Second(id1,ssss1,ssss2,ssss3,ssss4,ssss5,ssss6,ssss7,ssss8);
         if(!TextUtils.isEmpty(ssss1)&&!TextUtils.isEmpty(ssss2)&&!TextUtils.isEmpty (ssss3)&&!TextUtils.isEmpty (ssss4)&&!TextUtils.isEmpty (ssss5)&&!TextUtils.isEmpty (ssss6)&&!TextUtils.isEmpty (ssss7)&&!TextUtils.isEmpty (ssss8)){
 

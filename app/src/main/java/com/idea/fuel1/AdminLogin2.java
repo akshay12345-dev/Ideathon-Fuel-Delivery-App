@@ -16,10 +16,10 @@ public class AdminLogin2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_admin_login2);
-        eml1=(EditText)findViewById (R.id.etl11);
-        eml2=(EditText)findViewById (R.id.etl22);
-        bml1=(Button)findViewById (R.id.btl11);
-        bml2=(Button)findViewById (R.id.btl22);
+        eml1= findViewById (R.id.etl11);
+        eml2= findViewById (R.id.etl22);
+        bml1= findViewById (R.id.btl11);
+        bml2= findViewById (R.id.btl22);
         bml2.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {

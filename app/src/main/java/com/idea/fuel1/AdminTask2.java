@@ -33,7 +33,7 @@ public class AdminTask2 extends AppCompatActivity {
         NavigationView navigationView = findViewById (R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder (R.id.navigation_dashboard, R.id.navigation_notifications,R.id.navigation_gallery,R.id.navigation_logout).setDrawerLayout (drawer).build ( );
+        mAppBarConfiguration = new AppBarConfiguration.Builder (R.id.navigation_deliver, R.id.navigation_notifications,R.id.navigation_gallery,R.id.navigation_logout).setDrawerLayout (drawer).build ( );
         NavController navController = Navigation.findNavController (this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController (this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController (navigationView, navController);
